@@ -1,3 +1,4 @@
+import axios from "axios";
 import { ChangeEvent, FormEvent, useState } from "react";
 
 export default function Form() {
@@ -18,18 +19,31 @@ export default function Form() {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
+            "Access-Control-Allow-Headers": "Content-Type, Authorization",
           },
           body: JSON.stringify(formData),
-          // mode: "no-cors"
+          mode: "no-cors"
         }
       );
 
-      if (response.ok) {
-        console.log("Usuário criado com sucesso!");
-      } else {
+      // axios
+      //   .post("https://yr8j9ksw09.execute-api.us-east-1.amazonaws.com/users")
+      //   .then((response) => {
+      //     console.log(response.data);
+      //   })
+      //   .catch((error) => {
+      //     console.error(error);
+      //     throw error;
+      //   });
+
+      if (!response.ok) {
         console.log("Erro ao criar usuário");
+        throw new Error("Erro ao criar usuário");
       }
+
+      console.log("Usuário criado com sucesso!");
     } catch (error) {
       console.error("Erro:", error);
     }
