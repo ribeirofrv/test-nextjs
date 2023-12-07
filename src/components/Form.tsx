@@ -9,6 +9,7 @@ export default function Form() {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setFormData({ userId: "", name: "", email: "" });
 
     try {
       const response = await fetch(
@@ -17,16 +18,17 @@ export default function Form() {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+
           },
           body: JSON.stringify(formData),
+          // mode: "no-cors"
         }
       );
 
       if (response.ok) {
-        alert("Usuário criado com sucesso!");
-        setFormData({ userId: "", name: "", email: "" });
+        console.log("Usuário criado com sucesso!");
       } else {
-        alert("Erro ao criar usuário");
+        console.log("Erro ao criar usuário");
       }
     } catch (error) {
       console.error("Erro:", error);
@@ -40,6 +42,7 @@ export default function Form() {
 
   return (
     <section className="w-full max-w-xs">
+      <h1 className="text-2xl mb-2 ml-1">Criação de usuário test</h1>
       <form
         onSubmit={handleSubmit}
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
@@ -54,6 +57,7 @@ export default function Form() {
           <input
             type="text"
             name="userId"
+            id="userId"
             placeholder="User ID"
             value={formData.userId}
             onChange={handleInputChange}
@@ -71,6 +75,7 @@ export default function Form() {
           <input
             type="text"
             name="name"
+            id="name"
             placeholder="Name"
             value={formData.name}
             onChange={handleInputChange}
@@ -88,6 +93,7 @@ export default function Form() {
           <input
             type="text"
             name="email"
+            id="email"
             placeholder="Email"
             value={formData.email}
             onChange={handleInputChange}
