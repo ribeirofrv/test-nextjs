@@ -19,12 +19,12 @@ export default function Form() {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
-            "Access-Control-Allow-Headers": "Content-Type, Authorization",
+            // "Access-Control-Allow-Origin": "*",
+            // "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
+            // "Access-Control-Allow-Headers": "Content-Type, Authorization",
           },
           body: JSON.stringify(formData),
-          mode: "no-cors"
+          // mode: "no-cors"
         }
       );
 

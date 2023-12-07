@@ -16,7 +16,6 @@ export default async function Chuck() {
   const response = await fetch(`https://api.chucknorris.io/jokes/random`, {
     method: "GET",
     // next: { revalidate: 30 },
-
   });
 
   if (!response.ok) {
